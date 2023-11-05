@@ -130,6 +130,8 @@ p {
     color: #C94314;
     font-weight: 600;
     font-size: 19px;
+    background-color: #ffffff;
+    border: none;
 }
 .add {
     background-color: #9CE76A;

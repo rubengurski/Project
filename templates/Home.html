@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link href="stylecustomer.css" type="text/css" rel="stylesheet"> -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylecustomer.css') }}" />
+        <title>Home</title>
+        <!-- <meta http-equiv="refresh" content="2"> -->
+    </head>
+    <body>
+        <header style="position: fixed; width: 100%; z-index: 1;">
+            <img src="{{url_for('static', filename='Pizzeria Logo.png')}}" style="display: block; margin-left: auto; margin-right: auto; height:80px;">
+        </header>
+        <div style="margin-left: 150px; padding-top: 90px;">
+            <h3 class="title">Mario's & Luigi's<br>Pizzeria</h3>
+        </div>
+        <div class="home">
+            <div class="column" id="home">
+                {% if scroll %}
+                <script>
+                    document.location.hash = '#' + '{{ scroll }}';
+                </script>
+                {% endif %}    
+                <div class="bar">
+                    <p> </p>
+                </div>
+                <div class="row">
+                    <div class="menu">
+                        <div class="row" style="margin-bottom: 30px;">
+                            <img src="{{url_for('static', filename='flag.png')}}" width="350" height="35px" style="margin-top: 30px;">
+                            <p class="item-name" style="font-size: 60px; color:#712822">Menu</p>
+                            <img src="{{url_for('static', filename='flag.png')}}" width="350" height="35px" style="margin-top: 30px;">
+                        </div>
+                        <form action="/addpizza" method="post">
+                            <div class="item">
+                                <img src="{{url_for('static', filename='Margherita.png')}}" height="200px" class="image-pizza">
+                                <div class="column">
+                                    <div class="row">
+                                        <p class="item-name">Pizza Margherita</p>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce & cheese</p>
+                                        <p class="item-price">€5,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column" style="width: 130px;">
+                                            <div class="row">
+                                                <img src="{{url_for('static', filename='vegetarian-icon.png')}}" height="30px">
+                                                <p style="padding-bottom:20px">Vegetarian</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input type="hidden" id="Pizza1" name="addpizza" value="Margherita">
+                                            <input class="add" type="submit" value="Add to overview">      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="/addpizza" method="post">
+                            <div class="item">
+                                <img src="{{url_for('static', filename='Pepperoni.png')}}" height="200px" class="image-pizza">
+                                <div class="column">
+                                    <div class="row">
+                                        <p class="item-name">Pizza Pepperoni</p>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce, cheese & pepperoni</p>
+                                        <p class="item-price">€6,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column" style="width: 200px;">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" id="Pizza2" name="addpizza" value="Pepperoni">
+                                            <input class="add" type="submit" value="Add to overview">      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="/addpizza" method="post">
+                            <div class="item">
+                                <img src="{{url_for('static', filename='Tuna.png')}}" height="200px" class="image-pizza">
+                                <div class="column">
+                                    <div class="row">
+                                        <p class="item-name">Pizza Tuna</p>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce, tuna, onion, olives & cheese</p>
+                                        <p class="item-price">€7,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column" style="width: 200px;">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" id="Pizza3" name="addpizza" value="Tuna">
+                                            <input class="add" type="submit" value="Add to overview">      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="overview">
+                        <div style="display: flex; flex-direction: row; margin: 30px;">
+                            <img src="{{url_for('static', filename='icon overview (dark).png')}}" height="70px" style="width:fit-content"><p style="font-size: 28px; font-weight: 600; margin-top: 20px; color: #712822; margin-left: 30px;">Overview</p>
+                        </div>
+                        <form action="/overview" method="post">
+                            {% if Margherita in Overview %}
+                            <div class="item" style="padding-left: 0px;">
+                                <div class="column">
+                                    <div class="row">
+                                        <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
+                                        <div>
+                                            <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce & cheese</p>
+                                        <p class="item-price">€5,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div style="margin-left:20px">
+                                            <p style="margin-left:0px; margin-top:0px;"><strong>Extra toppings:</strong></p>
+                                            <input type="checkbox" id="extra1" name="extra" value="Cheese">
+                                            <label for="extra1"> Extra cheese</label><br>
+                                            <input type="checkbox" id="extra2" name="extra" value="Olives">
+                                            <label for="extra2"> Extra olives</label><br>
+                                            <input type="checkbox" id="extra3" name="extra" value="Mushrooms">
+                                            <label for="extra3"> Extra mushrooms</label>
+                                        </div>
+                                        <div class="column" style="width: 200px; margin-right: 10px;">
+                                            <div class="row">
+                                                <label for="sizes"><strong>Choose size:</strong></label>
+                                                <select id="sizes" name="sizes">
+                                                    <option value="small">Small</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="large">Large</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <br>
+                                                <label for="quantity"><strong>Quantity:</strong></label>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if Pepperoni in Overview %}
+                            <div class="item" style="padding-left: 0px;">
+                                <div class="column">
+                                    <div class="row">
+                                        <p style="font-size:20px; font-weight:700;">Pizza Pepperoni</p>
+                                        <div>
+                                            <input type="hidden" id="remove2" name="removePizza" value="removePepperoni">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce, cheese & pepperoni</p>
+                                        <p class="item-price">€6,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div style="margin-left:20px">
+                                            <p style="margin-left:0px; margin-top:0px;"><strong>Extra toppings:</strong></p>
+                                            <input type="checkbox" id="extra1" name="extra" value="Cheese">
+                                            <label for="extra1"> Extra cheese</label><br>
+                                            <input type="checkbox" id="extra2" name="extra" value="Olives">
+                                            <label for="extra2"> Extra olives</label><br>
+                                            <input type="checkbox" id="extra3" name="extra" value="Mushrooms">
+                                            <label for="extra3"> Extra mushrooms</label>
+                                        </div>
+                                        <div class="column" style="width: 200px; margin-right: 10px;">
+                                            <div class="row">
+                                                <label for="sizes"><strong>Choose size:</strong></label>
+                                                <select id="sizes" name="sizes">
+                                                    <option value="small">Small</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="large">Large</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <br>
+                                                <label for="quantity"><strong>Quantity:</strong></label>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if Tuna in Overview %}
+                            <div class="item" style="padding-left: 0px;">
+                                <div class="column">
+                                    <div class="row">
+                                        <p style="font-size:20px; font-weight:700;">Pizza Tuna</p>
+                                        <div>
+                                            <input type="hidden" id="remove2" name="removePizza" value="removeTuna">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>Tomato sauce, tuna, onion & cheese</p>
+                                        <p class="item-price">€7,99</p>
+                                    </div>
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div style="margin-left:20px">
+                                            <p style="margin-left:0px; margin-top:0px;"><strong>Extra toppings:</strong></p>
+                                            <input type="checkbox" id="extra1" name="extra" value="Cheese">
+                                            <label for="extra1"> Extra cheese</label><br>
+                                            <input type="checkbox" id="extra2" name="extra" value="Olives">
+                                            <label for="extra2"> Extra olives</label><br>
+                                            <input type="checkbox" id="extra3" name="extra" value="Mushrooms">
+                                            <label for="extra3"> Extra mushrooms</label>
+                                        </div>
+                                        <div class="column" style="width: 200px; margin-right: 10px;">
+                                            <div class="row">
+                                                <label for="sizes"><strong>Choose size:</strong></label>
+                                                <select id="sizes" name="sizes">
+                                                    <option value="small">Small</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="large">Large</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <br>
+                                                <label for="quantity"><strong>Quantity:</strong></label>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <p class="item-price" style="text-align: right; margin-bottom: 30px;">Total: €{{ TotalPrice }}</p>
+                            <div class="choice">
+                                <input type="radio" id="takehome" name="choice"><label for="takehome" style="margin-right: 90px;">Take home</label>
+                                <input type="radio" id="atrestaurant" name="choice"><label for="atrestaurant">Eat at restaurant</label>
+                            </div><br><br>
+                            <div class="choice" style="margin-bottom: 30px;">
+                                <label for="enteremail" style="color:#712822; margin:5px">Please enter e-mail address to receive order confirmation & number:</label><input type="text" name="enteremail" style="width:100%; margin-top: 10px; margin-bottom: 30px;">
+                            </div>
+                            <img src="{{url_for('static', filename='paymentmethods.png')}}" height="40px" width="80%" style="margin:10px">
+                            <input type="submit" name="submit" value="Pay & Proceed" style="margin-left: 200px; background-color: #712822; border:none; color:#ffffff; height: 60px; font-weight: 600; font-size: 25px; border-radius: 18px; padding:10px">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="{{url_for('static', filename='Background pizzeria1.png')}}" width="100%" style="padding-bottom: 1150px;">
+        <footer>
+            <div>
+                <h5>Contact Us</h5>
+                <p class="p-header-footer">example@gmail.com<br><br>06 000 0000</p>
+            </div>
+            <div>
+                <h5>Opening hours:</h5>
+                <p class="p-header-footer">Monday: 14:00 - 22:00<br>Tuesday: 14:00 - 22:00<br>Wednesday: 14:00 - 22:00<br>Thursday: 14:00 - 22:00<br>Friday: 16:00 - 23:00<br>Saturday: 16:00 - 23:00<br>Sunday: 16:00 - 21:00</p>
+            </div>
+        </footer>
+    </body>
+</html>

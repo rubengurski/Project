@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link href="stylecustomer.css" type="text/css" rel="stylesheet"> -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylecustomer.css') }}" />
+        <title>Done!</title>
+        <!-- <meta http-equiv="refresh" content="2"> -->
+    </head>
+    <body style="background-color: #fffdea;">
+        <header style="position: fixed; width: 100%; z-index: 1;">
+            <img src="{{url_for('static', filename='Pizzeria logo.png')}}" style="display: block; margin-left: auto; margin-right: auto; height:80px;">
+        </header>
+        <div style="padding:90px; padding-top:130px">
+            <a href="/" class="item-price" style="text-decoration: none; font-size: 24px;">< Back to Menu</a>
+            <div class="box">
+                <img src="{{url_for('static', filename='ovenicon.png')}}" style="display: block; margin-left: auto; margin-right: auto; width:12%;">
+                <p style="text-align: center; font-weight: 600; font-size: 22px;">Thank you for choosing Mario's & Luigi's Pizzeria!<br>Your order is now being processed.<br></p><p style="text-align: center; font-weight: 700; font-size: 36px; color:#712822">Your order number is</p>
+                <h1 style="text-align: center; font-size: 90px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; color:#712822">24</h1>
+            </div>
+            <div>
+                <p class="item-price"></p>
+                <div class="status-inprogress"><p style="color: #ffffff; font-size: 20px;">Status of your order:</p>Being processed</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <p class="item-price">Order details</p><hr style="border: 2px solid #712822">
+                <div class="row" style="font-size: larger;">
+                    <p><strong>Pizza name</strong><br>Topping description<br>Extra option 1<br>Extra option 3</p>
+                    <p><strong>Quantity: 1</strong></p>
+                </div><hr>
+                <div class="row" style="font-size: larger;">
+                    <p><strong>Pizza name</strong><br>Topping description<br>Extra option 1<br>Extra option 3</p>
+                    <p><strong>Quantity: 1</strong></p>
+                </div><hr>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <h5>Contact Us</h5>
+                <p class="p-header-footer">example@gmail.com<br><br>06 000 0000</p>
+            </div>
+            <div>
+                <h5>Opening hours:</h5>
+                <p class="p-header-footer">Monday: 14:00 - 22:00<br>Tuesday: 14:00 - 22:00<br>Wednesday: 14:00 - 22:00<br>Thursday: 14:00 - 22:00<br>Friday: 16:00 - 23:00<br>Saturday: 16:00 - 23:00<br>Sunday: 16:00 - 21:00</p>
+            </div>
+        </footer>
+    </body>
+</html>
