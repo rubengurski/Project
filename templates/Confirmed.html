@@ -23,14 +23,24 @@
             </div>
             <div style="margin-top: 80px;">
                 <p class="item-price">Order details</p><hr style="border: 2px solid #712822">
+                {% if Margherita in Overview %}
                 <div class="row" style="font-size: larger;">
-                    <p><strong>Pizza name</strong><br>Topping description<br>Extra option 1<br>Extra option 3</p>
+                    <p><strong>Pizza Margherita</strong><br>Tomato sauce & cheese</p>
                     <p><strong>Quantity: 1</strong></p>
                 </div><hr>
+                {% endif %}
+                {% if Pepperoni in Overview %}
                 <div class="row" style="font-size: larger;">
-                    <p><strong>Pizza name</strong><br>Topping description<br>Extra option 1<br>Extra option 3</p>
+                    <p><strong>Pizza Pepperoni</strong><br>Tomato sauce, cheese & pepperoni</p>
                     <p><strong>Quantity: 1</strong></p>
                 </div><hr>
+                {% endif %}
+                {% if Tuna in Overview %}
+                <div class="row" style="font-size: larger;">
+                    <p><strong>Pizza Tuna</strong><br>Tomato sauce, tuna, onion, olives & cheese</p>
+                    <p><strong>Quantity: 1</strong></p>
+                </div><hr>
+                {% endif %}
             </div>
         </div>
         <footer>
