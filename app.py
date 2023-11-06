@@ -69,6 +69,7 @@ def overview_pay():
 
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
+    global csv
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
     with open('orders.csv', 'a', newline='') as csvfile:
