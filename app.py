@@ -68,6 +68,12 @@ def overview_pay():
 
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
-    global Overview, ordernr
-    ordernr = random.randint(1, 50)
+    current_time = datetime.now().time()
+    uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
+    with open('orders.csv', 'a', newline='') as csvfile:
+        fieldnames = ['Pizza', uniqueID]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for pizza in Overview:
+            writer.writerow(pizza)
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', ordernr=ordernr)
