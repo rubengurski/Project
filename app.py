@@ -12,6 +12,10 @@ scroll=''
 def init():
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
+@app.route('/mario', methods=['POST', 'GET'])
+def init():
+    return render_template('index.html')
+
 @app.route('/addpizza', methods = ['POST'])
 def add_pizza():
     global TotalPrice, scroll
