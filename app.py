@@ -72,9 +72,10 @@ def payment_confirmed():
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
     with open('orders.csv', 'a', newline='') as csvfile:
-        fieldnames = ['Pizza', uniqueID]
+        fieldnames = ['Pizza', 'uniqueID']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
+        writer.writerow({'uniqueID':uniqueID})
         for pizza in Overview:
-            writer.writerow(pizza)
+            writer.writerow({'Pizza':pizza})
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
