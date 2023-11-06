@@ -9,11 +9,11 @@ TotalPrice=float(0)
 scroll=''
 
 @app.route('/', methods=['POST', 'GET'])
-def init():
+def home():
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
 @app.route('/mario', methods=['POST', 'GET'])
-def init():
+def mario():
     return render_template('Mario.html')
 
 @app.route('/addpizza', methods = ['POST'])
