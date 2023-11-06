@@ -1,0 +1,137 @@
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.prepared{
+    color: white;
+    font-size: 45px;
+    background-color: #C94314;
+    padding-top: 45px;
+}
+.finished{
+    color: #712822;
+    font-size: 45px;
+    background-color: #9CE76A;
+    padding-top: 45px;
+}
+.header{
+    height: 200px;
+    text-align: center;
+}
+.body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+}
+
+.o24{
+    font-size: 100px;
+    background-color: #B8B8B8;
+    display: inline-block;
+    padding: 100px;
+    column-gap: 30px;
+    margin: 25px;
+}
+.o25{
+    font-size: 100px;
+    background-color: #B8B8B8;
+    display: inline-block;
+    border: 2px black;
+    padding: 100px;
+    margin: 25px;
+}
+.o26{
+    font-size: 100px;
+    background-color: #B8B8B8;
+    display: inline-block;
+    border: 2px black;
+    padding: 100px;
+    margin: 25px;
+}
+.o27{
+    font-size: 100px;
+    background-color: #B8B8B8;
+    display: inline-block;
+    border: 2px black;
+    padding: 100px;
+    margin: 25px;
+}
+.orderfin{
+    background-color: white;
+    height: 800px;
+    margin-right: 20px;
+}
+.orderprep{
+    background-color: white;
+    height: 800px;
+    margin-left: 20px;
+}
+.order24{
+    background-color: #B8B8B8;
+    margin-bottom: 12px;
+    padding: 4px;
+}
+.header24{
+    text-align: left;
+    font-size: 30px;
+    padding-left: 25px;
+}
+.button24{
+    font-size: 30px;
+    border:black;
+    color: black;
+    background-color: #4237a1;
+    border-radius: 25px;
+    padding: 15px; 
+    margin-left: 1300px;
+    margin-bottom: 20px;
+}
+.order25{
+    background-color: #B8B8B8;
+    margin-bottom: 12px;
+    padding: 4px;
+}
+.order26{
+    background-color: #B8B8B8;
+    margin-bottom: 12px;
+    padding: 4px;
+}
+.header25{
+    text-align: left;
+    font-size: 30px;
+    padding-left: 25px;
+}
+.button25{
+    font-size: 30px;
+    border:black;
+    color: black;
+    background-color: #4237a1;
+    border-radius: 25px;
+    padding: 15px; 
+    margin-left: 1300px;
+    margin-bottom: 20px;
+}
+.header26{
+    text-align: left;
+    font-size: 30px;
+    padding-left: 25px;
+}
+.button26{
+    font-size: 30px;
+    border:black;
+    color: black;
+    background-color: #4237a1;
+    border-radius: 25px;
+    padding: 15px; 
+    margin-left: 1300px;
+    margin-bottom: 20px;
+}
+.pizza24{
+    padding-left: 25px;
+}
+.pizza25{
+    padding-left: 25px;
+}
+.pizza26{
+    padding-left: 25px;
+}
