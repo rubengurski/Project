@@ -76,4 +76,4 @@ def payment_confirmed():
         writer.writeheader()
         for pizza in Overview:
             writer.writerow(pizza)
-    return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', ordernr=ordernr)
+    return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
