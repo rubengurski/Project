@@ -14,7 +14,7 @@ def init():
 
 @app.route('/mario', methods=['POST', 'GET'])
 def init():
-    return render_template('index.html')
+    return render_template('Mario.html')
 
 @app.route('/addpizza', methods = ['POST'])
 def add_pizza():
