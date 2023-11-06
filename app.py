@@ -59,5 +59,7 @@ def overview_remove():
 
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
-
+    if 'Margherita' in Overview:
+        pizzaName1='Margherita'
+        
     return render_template('Confirmed.html')

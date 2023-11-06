@@ -114,12 +114,26 @@
                         <div style="display: flex; flex-direction: row; margin: 30px;">
                             <img src="{{url_for('static', filename='icon overview (dark).png')}}" height="70px" style="width:fit-content"><p style="font-size: 28px; font-weight: 600; margin-top: 20px; color: #712822; margin-left: 30px;">Overview</p>
                         </div>
-                        {% if Margherita in Overview %}
-                        <form action="/removepizza" method="post"`style="position:absolute; left:1200px; top: 1200px">
-                            <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
-                            <input class="remove" type="submit" value="Remove">      
-                        </form>
-                        {% endif %}
+                        <div>
+                            {% if Margherita in Overview %}
+                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 188px">
+                                <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            {% endif %}
+                            {% if Pepperoni in Overview %}
+                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 485px">
+                                <input type="hidden" id="remove2" name="removePizza" value="removePepperoni">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            {% endif %}
+                            {% if Tuna in Overview %}
+                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 785px">
+                                <input type="hidden" id="remove2" name="removePizza" value="removeTuna">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            {% endif %}
+                        </div>
                         <form action="/pay" method="post">
                             {% if Margherita in Overview %}
                             <div class="item" style="padding-left: 0px;">
@@ -168,10 +182,6 @@
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Pepperoni</p>
-                                        <div>
-                                            <input type="hidden" id="remove2" name="removePizza" value="removePepperoni">
-                                            <input class="remove" type="submit" value="Remove">      
-                                        </div>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce, cheese & pepperoni</p>
@@ -214,10 +224,6 @@
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Tuna</p>
-                                        <div>
-                                            <input type="hidden" id="remove2" name="removePizza" value="removeTuna">
-                                            <input class="remove" type="submit" value="Remove">      
-                                        </div>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce, tuna, onion & cheese</p>
