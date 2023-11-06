@@ -114,16 +114,18 @@
                         <div style="display: flex; flex-direction: row; margin: 30px;">
                             <img src="{{url_for('static', filename='icon overview (dark).png')}}" height="70px" style="width:fit-content"><p style="font-size: 28px; font-weight: 600; margin-top: 20px; color: #712822; margin-left: 30px;">Overview</p>
                         </div>
-                        <form action="/overview" method="post">
+                        {% if Margherita in Overview %}
+                        <form action="/removepizza" method="post"`style="position:absolute; left:1200px; top: 1200px">
+                            <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
+                            <input class="remove" type="submit" value="Remove">      
+                        </form>
+                        {% endif %}
+                        <form action="/pay" method="post">
                             {% if Margherita in Overview %}
                             <div class="item" style="padding-left: 0px;">
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
-                                        <div>
-                                            <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
-                                            <input class="remove" type="submit" value="Remove">      
-                                        </div>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce & cheese</p>
