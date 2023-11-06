@@ -15,12 +15,15 @@ def home():
 
 @app.route('/mario', methods=['POST', 'GET'])
 def mario():
-    global ordernr
-    return render_template('Mario.html', ordernr=ordernr)
+    return render_template('Mario.html')
 
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
     return render_template('Luigi.html')
+
+@app.route('/screen', methods=['POST', 'GET'])
+def screen_customers():
+    return render_template('Screen.html')
 
 @app.route('/addpizza', methods = ['POST'])
 def add_pizza():
