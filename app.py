@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
+import random
 
 app = Flask(__name__)
 
@@ -64,4 +65,5 @@ def overview_remove():
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
     global Overview
-    return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna')
+    ordernr = random.randint(1, 50)
+    return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', ordernr=ordernr)

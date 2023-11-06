@@ -15,7 +15,7 @@
             <div class="box">
                 <img src="{{url_for('static', filename='ovenicon.png')}}" style="display: block; margin-left: auto; margin-right: auto; width:12%;">
                 <p style="text-align: center; font-weight: 600; font-size: 22px;">Thank you for choosing Mario's & Luigi's Pizzeria!<br>Your order is now being processed.<br></p><p style="text-align: center; font-weight: 700; font-size: 36px; color:#712822">Your order number is</p>
-                <h1 style="text-align: center; font-size: 90px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; color:#712822">24</h1>
+                <h1 style="text-align: center; font-size: 90px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; color:#712822">{{ ordernr }}</h1>
             </div>
             <div>
                 <p class="item-price"></p>
