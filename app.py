@@ -15,7 +15,12 @@ def home():
 
 @app.route('/mario', methods=['POST', 'GET'])
 def mario():
-    return render_template('Mario.html')
+    global ordernr
+    return render_template('Mario.html', ordernr=ordernr)
+
+@app.route('/luigi', methods=['POST', 'GET'])
+def luigi():
+    return render_template('Luigi.html')
 
 @app.route('/addpizza', methods = ['POST'])
 def add_pizza():
@@ -36,14 +41,6 @@ def add_pizza():
     print('Data received:', addpizza, '\n current overview:', Overview)  # See console...
     return redirect('/')
 
-@app.route('/pay', methods=['POST', 'GET'])
-def overview_pay():
-    global TotalPrice, scroll
-    scroll='home'
-    submit=str(request.form['submit'])
-    if submit=='Pay & Proceed':
-        return redirect('/confirmed')
-
 @app.route('/removepizza', methods=['POST', 'GET'])
 def overview_remove():
     global TotalPrice, scroll
@@ -62,8 +59,12 @@ def overview_remove():
         TotalPrice-=7.99
         return redirect('/')
 
+@app.route('/pay', methods=['POST', 'GET'])
+def overview_pay():
+    return redirect('/confirmed')
+
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
-    global Overview
+    global Overview, ordernr
     ordernr = random.randint(1, 50)
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', ordernr=ordernr)
