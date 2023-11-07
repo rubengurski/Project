@@ -27,7 +27,7 @@ def luigi():
         reader = csv.DictReader(csvfile)
         for row in reader:
             print(row['Pizza'], row['uniqueID'])
-            Orders[Pizza]=uniqueID
+            Orders['Pizza']=uniqueID
     print(str(Orders))
     return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
 
@@ -97,4 +97,4 @@ def overview_pay():
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
-app.run()
+app.run(host='192.168.0.101')

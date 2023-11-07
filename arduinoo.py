@@ -78,8 +78,6 @@ def loop():
             print(f"Timer for Program {current_program + 1}: {remaining_time} seconds", end="\r")
             time.sleep(1)
             remaining_time -= 1
-            data = { 'status': "Pizza not done" }
-            response = requests.post('http://localhost:5000/status', json = data)
         else:
             print("\nThe pizzas are ready!")
             data = { 'status': "Pizza done" }
