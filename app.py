@@ -31,6 +31,13 @@ def luigi():
 def screen_customers():
     return render_template('Screen.html')
 
+@app.route('/status', methods = ['POST'])
+def sstatus():
+    data = request.get_json()
+    status = data['status']
+    print(status)
+    return '200', 200
+
 @app.route('/addpizza', methods = ['POST'])
 def add_pizza():
     global TotalPrice, scroll
