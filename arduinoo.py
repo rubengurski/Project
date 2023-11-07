@@ -78,12 +78,10 @@ def loop():
             print(f"Timer for Program {current_program + 1}: {remaining_time} seconds", end="\r")
             time.sleep(1)
             remaining_time -= 1
-            data = { 'status': "Pizza not done" }
-            response = requests.post('http://localhost:5000/status', json = data)
         else:
             print("\nThe pizzas are ready!")
             data = { 'status': "Pizza done" }
-            response = requests.post('http://localhost:5000/status', json = data)
+            response = requests.post('http://192.168.0.101:5000/status', json = data)
     button_last_state[0] = button1_state
     button_last_state[1] = button2_state
 

@@ -14,7 +14,8 @@ uniqueID=''
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    round(TotalPrice, 2)
+    global Overview
+    
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
 @app.route('/mario', methods=['POST', 'GET'])
@@ -28,8 +29,7 @@ def luigi():
         reader = csv.DictReader(csvfile)
         for row in reader:
             print(row['Pizza'], row['uniqueID'])
-            Orders.append(row['Pizza'])
-        Orders.append(uniqueID)
+            Orders['Pizza']=uniqueID
     print(str(Orders))
     return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
 
@@ -91,11 +91,19 @@ def overview_pay():
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for pizza in Overview:
-            writer.writerow({'Pizza':pizza, 'uniqueID':uniqueID})
-    
-    return redirect('/confirmed')
+            writer.writerow({'Pizza':pizza})
+        writer.writerow({'Pizza':None})
+    return redirect('/reset')
+@app.route('/reset', methods=['POST', 'GET'])
+def reset():
+    global Overview
+    global TotalPrice
+    Overview = []
+    TotalPrice = 0.00
+    return redirect ('/confirmed')
 
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
+    
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
-app.run()
+app.run(host='192.168.0.101')
