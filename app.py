@@ -14,6 +14,8 @@ uniqueID=''
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
+    global Overview
+    
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
 @app.route('/mario', methods=['POST', 'GET'])
@@ -92,9 +94,17 @@ def overview_pay():
         for pizza in Overview:
             writer.writerow({'Pizza':pizza})
         writer.writerow({'Pizza':None})
-    return redirect('/confirmed')
+    return redirect('/reset')
+@app.route('/reset', methods=['POST', 'GET'])
+def reset():
+    global Overview
+    global TotalPrice
+    Overview = []
+    TotalPrice = 0.00
+    return redirect ('/confirmed')
 
 @app.route('/confirmed', methods=['GET', 'POST'])
 def payment_confirmed():
+    
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
 app.run(host='192.168.0.101')
