@@ -1,5 +1,6 @@
 from fhict_cb_01.custom_telemetrix import CustomTelemetrix
 import time, sys, threading
+import requests 
 
 # Constants
 BUTTON1PIN = 8  
@@ -18,7 +19,7 @@ PROGRAMS = [
 ]
 
 # Timer Durations
-TIMER_DURATIONS = [5, 10, 15, 20]
+TIMER_DURATIONS = [2, 3, 4, 5]
 
 # Variables
 current_program = 0
@@ -79,6 +80,8 @@ def loop():
             remaining_time -= 1
         else:
             print("\nThe pizzas are ready!")
+            data = { 'status': "Pizza done" }
+            response = requests.post('http://localhost:5000/status', json = data)
     button_last_state[0] = button1_state
     button_last_state[1] = button2_state
 
