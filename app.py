@@ -9,6 +9,7 @@ app = Flask(__name__)
 Overview=[]
 TotalPrice=float(0)
 scroll=''
+uniqueID=''
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
@@ -20,7 +21,11 @@ def mario():
 
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
-    return render_template('Luigi.html')
+    global uniqueID
+    if uniqueID=='':
+        return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID)
+    else:
+        return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID)
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
@@ -65,17 +70,19 @@ def overview_remove():
 
 @app.route('/pay', methods=['POST', 'GET'])
 def overview_pay():
-    return redirect('/confirmed')
-
-@app.route('/confirmed', methods=['GET', 'POST'])
-def payment_confirmed():
+    global uniqueID
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
-    with open('orders.csv', 'a', newline='') as csvfile:
+    with open('ordersprocessed.csv', 'a', newline='') as csvfile:
         fieldnames = ['Pizza', 'uniqueID']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerow({'uniqueID':uniqueID})
         for pizza in Overview:
             writer.writerow({'Pizza':pizza})
+        writer.writerow({'Pizza':None})
+    return redirect('/confirmed')
+
+@app.route('/confirmed', methods=['GET', 'POST'])
+def payment_confirmed():
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)

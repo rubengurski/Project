@@ -5,26 +5,45 @@
         <title>Kitchen</title>
     </head>
     <body style="background-color: #dbdbdb; margin:15px">
-        <header style="text-align: center;">Orders</header>
-        <main class = "main">
-        <div class = "item">
-            <h1 class ="item-name">Order number 24 <br></h1>
-            <div class = "container24">
-            <P class ="pizza24">1x Pizza Pepperoni</p>
-            <button class = "button24">Completed</button>
+        <p style="text-align: center; background-color: #dbdbdb; font-size: larger;"><strong>Orders</strong></p>
+        {% if Overview|length > 0 %}
+        <div class = "item" style="border-radius: 20px">
+            <div class="column">
+                <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
+                {% for pizza in Overview %}
+                <p style="font-size: 20px; margin: 5px">Pizza {{ pizza }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                <button class="add" style="height: 60%; margin-top:20%">Completed</button>
             </div>
         </div>
-            <div class = "item">
-            <h1 class ="item-name">Order number 25 <br></h1>
-            <P class = "pizza25">1x Pizza Pepperoni <br>
-               1x Pizza Margherita</p>
-            <button class = "button25">Completed</button>
+        {% endif %}
+        {% if Overview|length > 0 %}
+        <div class = "item" style="border-radius: 20px">
+            <div class="column">
+                <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
+                {% for pizza in Overview %}
+                <p style="font-size: 20px; margin: 5px">Pizza {{ pizza }}</p>
+                {% endfor %}
             </div>
-            <div class="item">
-            <h1 class ="item-name">Order number 26 <br></h1>
-            <P class = "pizza26">1x Pizza Tuna</P>
-            <button class = "button26">Completed</button>
+            <div>
+                <button class="add" style="height: 60%; margin-top:20%">Completed</button>
             </div>
-        </main>
+        </div>
+        {% endif %}
+        {% if Overview|length > 0 %}
+        <div class = "item" style="border-radius: 20px">
+            <div class="column">
+                <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
+                {% for pizza in Overview %}
+                <p style="font-size: 20px; margin: 5px">Pizza {{ pizza }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                <button class="add" style="height: 60%; margin-top:20%">Completed</button>
+            </div>
+        </div>
+        {% endif %}
     </body>
 </html>
