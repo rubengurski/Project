@@ -11,6 +11,8 @@ Orders={}
 TotalPrice=float(0)
 scroll=''
 uniqueID=''
+totalOrder = []
+allOrders = []
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
@@ -25,13 +27,11 @@ def mario():
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
     global uniqueID
-    with open('ordersprocessed.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            print(row['Pizza'], row['uniqueID'])
-            Orders['Pizza']=uniqueID
-    print(str(Orders))
-    return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
+    global totalOrder
+    global allOrders
+    print(totalOrder)
+    n = 0
+    return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, totalOrder = totalOrder, allOrders = allOrders, n=n)
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
@@ -84,16 +84,16 @@ def overview_remove():
 @app.route('/pay', methods=['POST', 'GET'])
 def overview_pay():
     global uniqueID
+    global totalOrder
+    global allOrders
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
-    with open('ordersprocessed.csv', 'a', newline='') as csvfile:
-        fieldnames = ['Pizza', 'uniqueID']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerow({'uniqueID':uniqueID})
-        for pizza in Overview:
-            writer.writerow({'Pizza':pizza})
-        writer.writerow({'Pizza':None})
+    totalOrder.append(uniqueID)
+    for item in Overview:
+        totalOrder.append(item)
+    print(totalOrder)
+    allOrders.append((totalOrder))
+
     return redirect('/reset')
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
