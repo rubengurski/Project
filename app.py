@@ -7,8 +7,8 @@ from datetime import datetime
 app = Flask(__name__)
 
 Overview=[]
-Orders={}
-TotalPrice=float(0)
+Orders=[]
+TotalPrice=0
 scroll=''
 uniqueID=''
 totalOrder = []
@@ -95,6 +95,7 @@ def overview_pay():
     allOrders.append((totalOrder))
 
     return redirect('/reset')
+
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
     global Overview
