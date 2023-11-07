@@ -79,3 +79,4 @@ def payment_confirmed():
         for pizza in Overview:
             writer.writerow({'Pizza':pizza})
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
+app.run()

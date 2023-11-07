@@ -18,7 +18,7 @@ PROGRAMS = [
 ]
 
 # Timer Durations
-TIMER_DURATIONS = [5, 10, 15, 20]
+TIMER_DURATIONS = [2, 3, 4, 5]
 
 # Variables
 current_program = 0
