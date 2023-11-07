@@ -24,15 +24,7 @@
     background-color: white;
 }
 
-.o24{
-    font-size: 100px;
-    background-color: #B8B8B8;
-    display: inline-block;
-    padding: 100px;
-    column-gap: 30px;
-    margin: 25px;
-}
-.o25{
+.o24, o25, o26, o27{
     font-size: 100px;
     background-color: #B8B8B8;
     display: inline-block;
@@ -40,22 +32,7 @@
     padding: 100px;
     margin: 25px;
 }
-.o26{
-    font-size: 100px;
-    background-color: #B8B8B8;
-    display: inline-block;
-    border: 2px black;
-    padding: 100px;
-    margin: 25px;
-}
-.o27{
-    font-size: 100px;
-    background-color: #B8B8B8;
-    display: inline-block;
-    border: 2px black;
-    padding: 100px;
-    margin: 25px;
-}
+
 .orderfin{
     background-color: white;
     height: 800px;
@@ -66,17 +43,17 @@
     height: 800px;
     margin-left: 20px;
 }
-.order24{
+.order24, order25, order26{
     background-color: #B8B8B8;
     margin-bottom: 12px;
     padding: 4px;
 }
-.header24{
+.header24, header25, header26{
     text-align: left;
     font-size: 30px;
     padding-left: 25px;
 }
-.button24{
+.button24, button25, button26{
     font-size: 30px;
     border:black;
     color: black;
@@ -86,52 +63,7 @@
     margin-left: 1300px;
     margin-bottom: 20px;
 }
-.order25{
-    background-color: #B8B8B8;
-    margin-bottom: 12px;
-    padding: 4px;
-}
-.order26{
-    background-color: #B8B8B8;
-    margin-bottom: 12px;
-    padding: 4px;
-}
-.header25{
-    text-align: left;
-    font-size: 30px;
-    padding-left: 25px;
-}
-.button25{
-    font-size: 30px;
-    border:black;
-    color: black;
-    background-color: #4237a1;
-    border-radius: 25px;
-    padding: 15px; 
-    margin-left: 1300px;
-    margin-bottom: 20px;
-}
-.header26{
-    text-align: left;
-    font-size: 30px;
-    padding-left: 25px;
-}
-.button26{
-    font-size: 30px;
-    border:black;
-    color: black;
-    background-color: #4237a1;
-    border-radius: 25px;
-    padding: 15px; 
-    margin-left: 1300px;
-    margin-bottom: 20px;
-}
-.pizza24{
-    padding-left: 25px;
-}
-.pizza25{
-    padding-left: 25px;
-}
-.pizza26{
+
+.pizza24, pizza25, pizza26{
     padding-left: 25px;
 }
