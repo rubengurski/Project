@@ -7,13 +7,14 @@ from datetime import datetime
 app = Flask(__name__)
 
 Overview=[]
-Orders={}
-TotalPrice=float(0)
+Orders=[]
+TotalPrice=0
 scroll=''
 uniqueID=''
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
+    round(TotalPrice, 2)
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
 @app.route('/mario', methods=['POST', 'GET'])
@@ -23,11 +24,12 @@ def mario():
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
     global uniqueID
-    with open('ordersprocessed.csv', newline='') as csvfile:
+    with open('order_' + str(uniqueID) + '.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             print(row['Pizza'], row['uniqueID'])
-            Orders[Pizza]=uniqueID
+            Orders.append(row['Pizza'])
+        Orders.append(uniqueID)
     print(str(Orders))
     return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
 
@@ -84,14 +86,13 @@ def overview_pay():
     global uniqueID
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
-    with open('ordersprocessed.csv', 'a', newline='') as csvfile:
+    with open('order_' + str(uniqueID) + '.csv', 'a', newline='') as csvfile:
         fieldnames = ['Pizza', 'uniqueID']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerow({'uniqueID':uniqueID})
         for pizza in Overview:
-            writer.writerow({'Pizza':pizza})
-        writer.writerow({'Pizza':None})
+            writer.writerow({'Pizza':pizza, 'uniqueID':uniqueID})
+    
     return redirect('/confirmed')
 
 @app.route('/confirmed', methods=['GET', 'POST'])
