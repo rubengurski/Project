@@ -29,7 +29,8 @@ def luigi():
         reader = csv.DictReader(csvfile)
         for row in reader:
             print(row['Pizza'], row['uniqueID'])
-            Orders['Pizza']=uniqueID
+            Orders.append(row['Pizza'])
+        Orders.append(uniqueID)
     print(str(Orders))
     return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
 
@@ -94,6 +95,7 @@ def overview_pay():
             writer.writerow({'Pizza':pizza})
         writer.writerow({'Pizza':None})
     return redirect('/reset')
+
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
     global Overview
