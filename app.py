@@ -7,6 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 Overview=[]
+Orders={}
 TotalPrice=float(0)
 scroll=''
 uniqueID=''
@@ -22,10 +23,13 @@ def mario():
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
     global uniqueID
-    if uniqueID=='':
-        return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID)
-    else:
-        return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID)
+    with open('ordersprocessed.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            print(row['Pizza'], row['uniqueID'])
+            Orders[Pizza]=uniqueID
+    print(str(Orders))
+    return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, Orders=Orders)
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
