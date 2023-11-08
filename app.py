@@ -23,6 +23,7 @@ Orders=[]
 allOrders=[]
 scroll=''
 uniqueID=''
+finishedIDsList=[]
 # structure of a totalOrder dictionary:
 # totalOrder = {
     # "uniqueID":'',
@@ -63,16 +64,49 @@ def luigi():
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
-    global allOrders, totalOrder1, totalOrder2, totalOrder3, totalOrder4, totalOrder5
-    return render_template('Screen.html', allOrders = allOrders, uniqueID=uniqueID)
+    global allOrders, totalOrder1, totalOrder2, totalOrder3, totalOrder4, totalOrder5, finishedIDsList
+    return render_template('Screen.html', allOrders = allOrders, uniqueID=uniqueID, finishedIDsList=finishedIDsList)
 
 @app.route('/status', methods = ['POST'])
 def sstatus():
     data = request.get_json()
-    global status
+    global status, x, allOrders, totalOrder1, totalOrder2, totalOrder3, totalOrder4, totalOrder5, finishedIDsList
     status = data['status']
-    
     print(status)
+
+    allOrders.clear()
+    if x>0:
+        x-=1
+        if x==1:
+            finishedIDsList.append(totalOrder1["uniqueID"])
+            totalOrder1.clear()
+        elif x==2:
+            finishedIDsList.append(totalOrder1["uniqueID"])
+            totalOrder1=totalOrder2.copy()
+            totalOrder2.clear()
+            allOrders.append(totalOrder1)
+        elif x==3:
+            finishedIDsList.append(totalOrder1["uniqueID"])
+            totalOrder1=totalOrder2.copy()
+            totalOrder2=totalOrder3.copy()
+            totalOrder3.clear()
+            allOrders.append(totalOrder1); allOrders.append(totalOrder2)
+        elif x==4:
+            finishedIDsList.append(totalOrder1["uniqueID"])
+            totalOrder1=totalOrder2.copy()
+            totalOrder2=totalOrder3.copy()
+            totalOrder3=totalOrder4.copy()
+            totalOrder4.clear()
+            allOrders.append(totalOrder1); allOrders.append(totalOrder2); allOrders.append(totalOrder3)
+        elif x==5:
+            finishedIDsList.append(totalOrder1["uniqueID"])
+            totalOrder1=totalOrder2.copy()
+            totalOrder2=totalOrder3.copy()
+            totalOrder3=totalOrder4.copy()
+            totalOrder4=totalOrder5.copy()
+            totalOrder5.clear()
+            allOrders.append(totalOrder1); allOrders.append(totalOrder2); allOrders.append(totalOrder3); allOrders.append(totalOrder5)
+
     return '200', 200
 
 @app.route('/addpizza', methods = ['POST'])

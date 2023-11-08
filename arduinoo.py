@@ -30,6 +30,7 @@ timers = [None] * len(PROGRAMS)
 def setup():
     global board
     board = CustomTelemetrix()
+    board.displayOn()
     board.set_pin_mode_digital_input_pullup(BUTTON1PIN)
     board.set_pin_mode_digital_input_pullup(BUTTON2PIN)
     board.set_pin_mode_digital_output(REDLEDPIN)
@@ -76,6 +77,7 @@ def loop():
         remaining_time = TIMER_DURATIONS[current_program]
         while remaining_time > 0:
             print(f"Timer for Program {current_program + 1}: {remaining_time} seconds", end="\r")
+            board.displayShow(remaining_time)
             time.sleep(1)
             remaining_time -= 1
         else:

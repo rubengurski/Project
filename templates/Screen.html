@@ -13,11 +13,15 @@
         <main class = "body">
             <div class = "orderprep">
                 {% for totalOrder in allOrders %}
-               <p class = "o">{{ totalOrder.uniqueID }}</p>
+                    {% if uniqueID %}
+                    <p class = "o">{{ totalOrder.uniqueID }}</p>
+                    {% endif %}
                {% endfor %}
             </div>
             <div class = "orderfin">
-                <p class = "o">(uniqueID)</p>
+                {% for ID in finishedIDsList %}
+                <p class = "o">{{ ID }}</p>
+                {% endfor %}
             </div>
         </main>
     </body>
