@@ -3,24 +3,23 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylecustomer.css') }}" />
     <head>
         <title>Kitchen</title>
+        <meta http-equiv="refresh" content="1">
     </head>
     <body style="background-color: #dbdbdb; padding:15px">
         <p style="text-align: center; background-color: #dbdbdb; font-size: larger;"><strong>Orders</strong></p>
-        {% if totalOrder|length > 0 %}
+        {% if allOrders|length > 0 %}
             {%for item in allOrders %}
                 <div class = "item" style="border-radius: 20px;">
                     <div class="column">
-                        <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
-                        {% for item in allOrders %}
-                            {%for order in item %}
-                                <p style="font-size: 20px; margin: 5px">{{ order }}</p>
-                            {% endfor %}  
-                        {% endfor %}
+                        <h1 class="item-name" style="margin-left: 0px">Order number {{ item[0] }}</h1>    
+                            <p style="font-size: 20px; margin: 5px">{{ item }}</p>
+                            
                     </div>
                     <div>
-                        <button class="add" style="height: 60%; margin-top:20%">Completed</button>
+                        <button class="add" style="height: 60%; margin-top:20%">{{item[1]}}</button>
                     </div>
                 </div>
+                
             {%endfor%}
         {% endif %}
             
@@ -36,6 +35,6 @@
                 <button class="add" style="height: 60%; margin-top:20%">Completed</button>
             </div>
         </div>
-        {% endfor %}
+        {% endif %}
     </body>
 </html>

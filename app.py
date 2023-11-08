@@ -11,12 +11,12 @@ Orders=[]
 TotalPrice=0
 scroll=''
 uniqueID=''
-totalOrder = []
+
 allOrders = []
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    global Overview
+    global Overviews
     
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
@@ -26,12 +26,9 @@ def mario():
 
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
-    global uniqueID
-    global totalOrder
     global allOrders
-    print(totalOrder)
-    n = 0
-    return render_template('Luigi.html', Overview=Overview, uniqueID=uniqueID, totalOrder = totalOrder, allOrders = allOrders, n=n)
+    print(allOrders)
+    return render_template('Luigi.html', Overview=Overview, allOrders = allOrders)
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
@@ -40,7 +37,9 @@ def screen_customers():
 @app.route('/status', methods = ['POST'])
 def sstatus():
     data = request.get_json()
+    global status
     status = data['status']
+    
     print(status)
     return '200', 200
 
@@ -84,15 +83,20 @@ def overview_remove():
 @app.route('/pay', methods=['POST', 'GET'])
 def overview_pay():
     global uniqueID
-    global totalOrder
     global allOrders
+
+    totalOrder = []
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
     totalOrder.append(uniqueID)
+    totalOrder.append('Preparing')
     for item in Overview:
         totalOrder.append(item)
-    print(totalOrder)
-    allOrders.append((totalOrder))
+   
+    print()
+    allOrders.append(totalOrder)
+    
+    print(allOrders)
 
     return redirect('/reset')
 
@@ -108,4 +112,4 @@ def reset():
 def payment_confirmed():
     
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
-app.run(host='192.168.0.101')
+app.run(host='192.168.178.171')
