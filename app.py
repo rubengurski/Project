@@ -50,7 +50,6 @@ allOrders=[]
 @app.route('/', methods=['POST', 'GET'])
 def home():
     global Overview
-    
     return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll)
 
 @app.route('/mario', methods=['POST', 'GET'])
@@ -67,7 +66,8 @@ def luigi():
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
-    return render_template('Screen.html')
+    global allOrders, totalOrder1, totalOrder2, totalOrder3, totalOrder4, totalOrder5
+    return render_template('Screen.html', allOrders = allOrders, uniqueID=uniqueID)
 
 @app.route('/status', methods = ['POST'])
 def sstatus():
@@ -205,34 +205,76 @@ def add_pizza_mario():
 @app.route('/removepizzamario', methods=['POST', 'GET'])
 def overview_remove_mario():
     global TotalPriceMario
-    scroll='home'
-    removepizzamario=str(request.form['removepizzamario'])
-    if removepizzamario=='removeMargherita':
+    removepizzaMario=str(request.form['removepizzaMario'])
+    if removepizzaMario=='removeMargherita':
         OverviewMario.remove('Margherita')
         TotalPriceMario-=5.99
         return redirect('/mario')
-    elif removepizzamario=='removePepperoni':
+    elif removepizzaMario=='removePepperoni':
         OverviewMario.remove('Pepperoni')
         TotalPriceMario-=6.99
         return redirect('/mario')
-    elif removepizzamario=='removeTuna':
+    elif removepizzaMario=='removeTuna':
         OverviewMario.remove('Tuna')
         TotalPriceMario-=7.99
         return redirect('/mario')
 
 @app.route('/paymario', methods=['POST', 'GET'])
-def overview_mario_pay():
-    global uniqueID
-    global totalOrder
-    global allOrders
+def overview_pay_mario():
+    global uniqueID, allOrders, x
     current_time = datetime.now().time()
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
-    totalOrder.append(uniqueID)
-    for item in OverviewMario:
-        totalOrder.append(item)
-    print(totalOrder)
-    allOrders.append((totalOrder))
-
+    if x==1:
+        totalOrder1["uniqueID"]=uniqueID
+        y=1
+        for item in OverviewMario:
+            if y<(len(OverviewMario)+1):
+                totalOrder1["pizza" + str(y)]=str(item)
+                y+=1
+        print(totalOrder1)
+        allOrders.append(totalOrder1)
+        print(str(allOrders))
+    elif x==2:
+        totalOrder2["uniqueID"]=uniqueID
+        y=1
+        for item in OverviewMario:
+            if y<(len(OverviewMario)+1):
+                totalOrder2["pizza" + str(y)]=str(item)
+                y+=1
+        print(totalOrder2)
+        allOrders.append(totalOrder2)
+        print(str(allOrders))
+    elif x==3:
+        totalOrder3["uniqueID"]=uniqueID
+        y=1
+        for item in OverviewMario:
+            if y<(len(OverviewMario)+1):
+                totalOrder3["pizza" + str(y)]=str(item)
+                y+=1
+        print(totalOrder3)
+        allOrders.append(totalOrder3)
+        print(str(allOrders))
+    elif x==4:
+        totalOrder4["uniqueID"]=uniqueID
+        y=1
+        for item in OverviewMario:
+            if y<(len(OverviewMario)+1):
+                totalOrder4["pizza" + str(y)]=str(item)
+                y+=1
+        print(totalOrder4)
+        allOrders.append(totalOrder4)
+        print(str(allOrders))
+    elif x==5:
+        totalOrder5["uniqueID"]=uniqueID
+        y=1
+        for item in OverviewMario:
+            if y<(len(OverviewMario)+1):
+                totalOrder5["pizza" + str(y)]=str(item)
+                y+=1
+        print(totalOrder5)
+        allOrders.append(totalOrder5)
+        print(str(allOrders))
+    x+=1
     return redirect('/resetmario')
 
 @app.route('/resetmario', methods=['POST', 'GET'])

@@ -3,6 +3,7 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylecustomer.css') }}" />
     <head>
         <title>Kitchen</title>
+        <meta http-equiv="refresh" content="1">
     </head>
     <body style="background-color: #dbdbdb; padding:15px">
         <p style="text-align: center; background-color: #dbdbdb; font-size: larger;"><strong>Orders</strong></p>
@@ -26,20 +27,6 @@
                     </div>
                 </div>
             {%endfor%}
-        {% endif %}
-            
-        {% if Overview|length > 0 %}
-        <div class = "item" style="border-radius: 20px">
-            <div class="column">
-                <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
-                {% for pizza in Overview %}
-                <p style="font-size: 20px; margin: 5px">Pizza {{ pizza }}</p>
-                {% endfor %}
-            </div>
-            <div>
-                <button class="add" style="height: 60%; margin-top:20%">Completed</button>
-            </div>
-        </div>
         {% endif %}
     </body>
 </html>
