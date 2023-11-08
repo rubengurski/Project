@@ -245,4 +245,4 @@ def reset_mario():
     TotalPriceMario = 0.00
     return redirect ('/mario')
 
-app.run(host='192.168.0.101')
+app.run(host='192.168.0.100')
