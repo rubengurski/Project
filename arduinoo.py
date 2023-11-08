@@ -79,6 +79,7 @@ def loop():
             time.sleep(1)
             remaining_time -= 1
         else:
+            global response
             print("\nThe pizzas are ready!")
             data = { 'status': "Pizza done" }
             response = requests.post('http://192.168.0.100:5000/status', json = data)

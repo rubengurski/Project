@@ -8,12 +8,19 @@
     <body style="background-color: #dbdbdb; padding:15px">
         <p style="text-align: center; background-color: #dbdbdb; font-size: larger;"><strong>Orders</strong></p>
         {% if allOrders|length > 0 %}
-            {%for item in allOrders %}
+            {%for totalOrder in allOrders %}
                 <div class = "item" style="border-radius: 20px;">
                     <div class="column">
-                        <h1 class="item-name" style="margin-left: 0px">Order number {{ item[0] }}</h1>    
-                            <p style="font-size: 20px; margin: 5px">{{ item }}</p>
-                            
+                        <h1 class="item-name" style="margin-left: 0px">Order number {{ totalOrder.uniqueID }}</h1>
+                        {% if pizza1 %}
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }}</p>
+                        {% endif %}
+                        {% if pizza2 %}
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }}</p>
+                        {% endif %}
+                        {% if pizza3 %}
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }}</p>
+                        {% endif %}
                     </div>
                     <div>
                         <button class="add" style="height: 60%; margin-top:20%">{{item[1]}}</button>

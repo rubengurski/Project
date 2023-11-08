@@ -2,6 +2,7 @@
 body, html {
     height: 100%;
     margin: 0;
+    font-family:sans-serif;
 }
 
 /* Define styles for the overall layout */
@@ -42,6 +43,16 @@ body, html {
 .total-section p {
     font-size: 25px;
     margin: 5px 0;
+}
+
+.item {
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .pay-button {
