@@ -12,14 +12,14 @@ html {
     color: white;
     font-size: 45px;
     background-color: #C94314;
-    padding-top: 45px;
+    padding-top: 15px;
     margin-top: 0px;
 }
 .finished{
     color: #712822;
     font-size: 45px;
     background-color: #9CE76A;
-    padding-top: 45px;
+    padding-top: 15px;
     margin-top: 0px;
 }
 .header{
@@ -45,12 +45,11 @@ html {
 
 .orderfin{
     background-color: white;
-    height: 800px;
-    margin-right: 20px;
+    height: 600px;
 }
 .orderprep{
     background-color: white;
-    height: 800px;
+    height: 600px;
 }
 .order24, order25, order26{
     background-color: #B8B8B8;
