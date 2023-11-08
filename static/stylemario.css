@@ -53,6 +53,8 @@ body, html {
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    margin-left:20px;
+    width:360px;
 }
 
 .pay-button {

@@ -12,13 +12,13 @@
                     <div class="column">
                         <h1 class="item-name" style="margin-left: 0px">Order number {{ totalOrder.uniqueID }}</h1>
                         {% if pizza1 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }} X{{ totalOrder.amount1 }}</p>
                         {% endif %}
                         {% if pizza2 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }} X{{ totalOrder.amount2 }}</p>
                         {% endif %}
                         {% if pizza3 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }} X{{ totalOrder.amount3 }}</p>
                         {% endif %}
                     </div>
                     <div>
@@ -29,20 +29,6 @@
                 </div>
                 
             {%endfor%}
-        {% endif %}
-            
-        {% if Overview|length > 0 %}
-        <div class = "item" style="border-radius: 20px">
-            <div class="column">
-                <h1 class="item-name" style="margin-left: 0px">Order number {{ uniqueID }}</h1>
-                {% for pizza in Overview %}
-                <p style="font-size: 20px; margin: 5px">Pizza {{ pizza }}</p>
-                {% endfor %}
-            </div>
-            <div>
-                <button class="add" style="height: 60%; margin-top:20%">Completed</button>
-            </div>
-        </div>
         {% endif %}
     </body>
 </html>
