@@ -81,7 +81,7 @@ def loop():
         else:
             print("\nThe pizzas are ready!")
             data = { 'status': "Pizza done" }
-            response = requests.post('http://localhost:5000/status', json = data)
+            response = requests.post('http://192.168.0.100:5000/status', json = data)
     button_last_state[0] = button1_state
     button_last_state[1] = button2_state
 

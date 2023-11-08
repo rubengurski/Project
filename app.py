@@ -112,4 +112,4 @@ def reset():
 def payment_confirmed():
     
     return render_template('Confirmed.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', uniqueID = uniqueID)
-app.run(host='192.168.178.171')
+app.run(host='192.168.0.100')
