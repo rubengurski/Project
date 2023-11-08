@@ -13,13 +13,13 @@
                     <div class="column">
                         <h1 class="item-name" style="margin-left: 0px">Order number {{ totalOrder.uniqueID }}</h1>
                         {% if pizza1 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }} X{{ totalOrder.amount1 }}</p>
                         {% endif %}
                         {% if pizza2 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }} X{{ totalOrder.amount2 }}</p>
                         {% endif %}
                         {% if pizza3 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }}</p>
+                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }} X{{ totalOrder.amount3 }}</p>
                         {% endif %}
                     </div>
                     <div>

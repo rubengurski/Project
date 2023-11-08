@@ -169,7 +169,7 @@
             <div class="total-section">
                 <div style="overflow-y: scroll; height: 400px">
                     {% if Margherita in OverviewMario %}
-                    <div class="item" style="width:330px">
+                    <div class="item">
                         <div class="column">
                             <div class="row">
                                 <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
@@ -182,10 +182,13 @@
                                 <p class="item-price">€5,99</p>
                             </div>
                         </div>
-                        <form action="/removepizzamario" method="post">
-                            <input type="hidden" id="remove1" name="removepizzaMario" value="removeMargherita">
-                            <input class="remove" type="submit" value="Remove">      
-                        </form>           
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove1" name="removepizzaMario" value="removeMargherita">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountMargheritaMario }}</strong></p>
+                        </div>
                     </div>
                     {% endif %}
                     {% if Pepperoni in OverviewMario %}
@@ -202,10 +205,13 @@
                                 <p class="item-price">€6,99</p>
                             </div>
                         </div>
-                        <form action="/removepizzamario" method="post">
-                            <input type="hidden" id="remove2" name="removepizzaMario" value="removePepperoni">
-                            <input class="remove" type="submit" value="Remove">      
-                        </form>           
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove2" name="removepizzaMario" value="removePepperoni">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountPepperoniMario }}</strong></p>
+                        </div>
                     </div>
                     {% endif %}
                     {% if Tuna in OverviewMario %}
@@ -222,10 +228,13 @@
                                 <p class="item-price">€7,99</p>
                             </div>
                         </div>
-                        <form action="/removepizzamario" method="post">
-                            <input type="hidden" id="remove3" name="removepizzaMario" value="removeTuna">
-                            <input class="remove" type="submit" value="Remove">      
-                        </form>           
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove3" name="removepizzaMario" value="removeTuna">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountTunaMario }}</strong></p>
+                        </div>
                     </div>
                     {% endif %}
                 </div>
