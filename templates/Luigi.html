@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="width: 98%">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylecustomer.css') }}" />
     <head>
         <title>Kitchen</title>
@@ -9,21 +9,41 @@
         <p style="text-align: center; background-color: #dbdbdb; font-size: larger;"><strong>Orders</strong></p>
         {% if allOrders|length > 0 %}
             {%for totalOrder in allOrders %}
-                <div class = "item" style="border-radius: 20px;">
-                    <div class="column">
-                        <h1 class="item-name" style="margin-left: 0px">Order number {{ totalOrder.uniqueID }}</h1>
+                <div class = "item" style="border-radius: 20px; padding:5px">
+                    <div class="column" style="margin:15px; margin-right: 200px;">
+                        <div class="row">
+                            <h1 class="item-name" style="margin-left: 0px; margin-top: 0px;">Order number {{ totalOrder.uniqueID }}</h1>
+                            <h1 class="item-name" style="margin-right: 10px; margin-top: 0px;">Amount</h1>
+                        </div>
                         {% if pizza1 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }} X{{ totalOrder.amount1 }}</p>
+                            <div class="row">
+                                <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza1 }}</p>
+                                    {% if amount1 %}
+                                    <p style="margin-right: 10px; font-size: larger;"><strong>{{ totalOrder.amount1 }}</strong></p>
+                                    {% endif %}
+                            </div>
                         {% endif %}
                         {% if pizza2 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }} X{{ totalOrder.amount2 }}</p>
+                            <hr style="margin: 0px; border: 1px solid #c2c2c2">
+                            <div class="row">
+                            <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza2 }}</p>
+                                {% if amount2 %}
+                                <p style="margin-right: 10px; font-size: larger;"><strong>{{ totalOrder.amount2 }}</strong></p>
+                                {% endif %}
+                            </div>
                         {% endif %}
                         {% if pizza3 %}
-                        <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }} X{{ totalOrder.amount3 }}</p>
+                            <hr style="margin: 0px; border: 1px solid #c2c2c2">
+                            <div class="row">
+                            <p style="font-size: 20px; margin: 5px">{{ totalOrder.pizza3 }}</p>
+                                {% if amount3 %}
+                                <p style="margin-right: 10px; font-size: larger;"><strong>{{ totalOrder.amount3 }}</strong></p>
+                                {% endif %}
+                            </div>
                         {% endif %}
                     </div>
                     <div>
-                        <button class="add" style="height: 60%; margin-top:20%">Completed</button>
+                        <button class="add" style="height: 60%; margin-top:30%; margin:40px">Completed</button>
                     </div>
                 </div>
                 

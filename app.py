@@ -11,14 +11,16 @@ Overview=[]
 amountMargherita=0
 amountPepperoni=0
 amountTuna=0
+amounts=[]
+TotalPrice=0
+OverviewMario=[]
 amountMargheritaMario=0
 amountPepperoniMario=0
 amountTunaMario=0
-OverviewMario=[]
+amountsMario=[]
+TotalPriceMario=0
 Orders=[]
 allOrders=[]
-TotalPrice=0
-TotalPriceMario=0
 scroll=''
 uniqueID=''
 # structure of a totalOrder dictionary:
@@ -37,11 +39,13 @@ totalOrder1 = {}; totalOrder2 = {}; totalOrder3 = {}; totalOrder4 = {}; totalOrd
 @app.route('/', methods=['POST', 'GET'])
 def home():
     global Overview
-    return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=TotalPrice, scroll=scroll, amountMargherita=amountMargherita, amountPepperoni=amountPepperoni, amountTuna=amountTuna)
+    roundedTotalPrice = round(TotalPrice, 2)
+    return render_template('Home.html', Overview=Overview, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPrice=roundedTotalPrice, scroll=scroll, amountMargherita=amountMargherita, amountPepperoni=amountPepperoni, amountTuna=amountTuna)
 
 @app.route('/mario', methods=['POST', 'GET'])
 def mario():
-    return render_template('Mario.html', OverviewMario=OverviewMario, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPriceMario=TotalPriceMario, amountMargheritaMario=amountMargheritaMario, amountPepperoniMario=amountPepperoniMario, amountTunaMario=amountTunaMario)
+    roundedTotalPriceMario = round(TotalPriceMario, 2)
+    return render_template('Mario.html', OverviewMario=OverviewMario, Margherita='Margherita', Pepperoni='Pepperoni', Tuna='Tuna', TotalPriceMario=roundedTotalPriceMario, amountMargheritaMario=amountMargheritaMario, amountPepperoniMario=amountPepperoniMario, amountTunaMario=amountTunaMario)
 
 @app.route('/luigi', methods=['POST', 'GET'])
 def luigi():
@@ -128,14 +132,22 @@ def overview_remove():
 def overview_pay():
     global uniqueID, allOrders, x, amounts
     current_time = datetime.now().time()
-    amounts=[amountMargherita, amountPepperoni, amountTuna]
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
+    amounts=[]
+    if len(Overview)==0:
+        return redirect('/')
     if x==1:
         totalOrder1["uniqueID"]=uniqueID
         y=1
         for item in Overview:
             if y<(len(Overview)+1):
                 totalOrder1["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amounts.append(amountMargherita)
+                if item=="Pepperoni":
+                    amounts.append(amountPepperoni)
+                if item=="Tuna":
+                    amounts.append(amountTuna)
                 y+=1
         z=1
         for amount in amounts:
@@ -151,6 +163,12 @@ def overview_pay():
         for item in Overview:
             if y<(len(Overview)+1):
                 totalOrder2["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amounts.append(amountMargherita)
+                if item=="Pepperoni":
+                    amounts.append(amountPepperoni)
+                if item=="Tuna":
+                    amounts.append(amountTuna)
                 y+=1
         z=1
         for amount in amounts:
@@ -166,6 +184,12 @@ def overview_pay():
         for item in Overview:
             if y<(len(Overview)+1):
                 totalOrder3["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amounts.append(amountMargherita)
+                if item=="Pepperoni":
+                    amounts.append(amountPepperoni)
+                if item=="Tuna":
+                    amounts.append(amountTuna)
                 y+=1
         z=1
         for amount in amounts:
@@ -181,6 +205,12 @@ def overview_pay():
         for item in Overview:
             if y<(len(Overview)+1):
                 totalOrder4["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amounts.append(amountMargherita)
+                if item=="Pepperoni":
+                    amounts.append(amountPepperoni)
+                if item=="Tuna":
+                    amounts.append(amountTuna)
                 y+=1
         z=1
         for amount in amounts:
@@ -196,6 +226,12 @@ def overview_pay():
         for item in Overview:
             if y<(len(Overview)+1):
                 totalOrder5["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amounts.append(amountMargherita)
+                if item=="Pepperoni":
+                    amounts.append(amountPepperoni)
+                if item=="Tuna":
+                    amounts.append(amountTuna)
                 y+=1
         z=1
         for amount in amounts:
@@ -210,8 +246,9 @@ def overview_pay():
 
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
-    global Overview, TotalPrice, amountMargherita, amountPepperoni, amountTuna
+    global Overview, TotalPrice, amountMargherita, amountPepperoni, amountTuna, amounts
     Overview = []
+    amounts=[]
     amountMargherita=0; amountPepperoni=0; amountTuna=0
     TotalPrice = 0.00
     return redirect ('/confirmed')
@@ -275,14 +312,22 @@ def overview_remove_mario():
 def overview_pay_mario():
     global uniqueID, allOrders, x, amountsMario
     current_time = datetime.now().time()
-    amountsMario=[amountMargheritaMario, amountPepperoniMario, amountTunaMario]
     uniqueID = current_time.hour * 3600 + current_time.minute * 60 + current_time.second
+    amountsMario=[]
+    if len(OverviewMario)==0:
+        return redirect('/mario')
     if x==1:
         totalOrder1["uniqueID"]=uniqueID
         y=1
         for item in OverviewMario:
             if y<(len(OverviewMario)+1):
                 totalOrder1["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amountsMario.append(amountMargheritaMario)
+                if item=="Pepperoni":
+                    amountsMario.append(amountPepperoniMario)
+                if item=="Tuna":
+                    amountsMario.append(amountTunaMario)
                 y+=1
         z=1
         for amount in amountsMario:
@@ -298,6 +343,12 @@ def overview_pay_mario():
         for item in OverviewMario:
             if y<(len(OverviewMario)+1):
                 totalOrder2["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amountsMario.append(amountMargheritaMario)
+                if item=="Pepperoni":
+                    amountsMario.append(amountPepperoniMario)
+                if item=="Tuna":
+                    amountsMario.append(amountTunaMario)
                 y+=1
         z=1
         for amount in amountsMario:
@@ -313,6 +364,12 @@ def overview_pay_mario():
         for item in OverviewMario:
             if y<(len(OverviewMario)+1):
                 totalOrder3["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amountsMario.append(amountMargheritaMario)
+                if item=="Pepperoni":
+                    amountsMario.append(amountPepperoniMario)
+                if item=="Tuna":
+                    amountsMario.append(amountTunaMario)
                 y+=1
         z=1
         for amount in amountsMario:
@@ -328,6 +385,12 @@ def overview_pay_mario():
         for item in OverviewMario:
             if y<(len(OverviewMario)+1):
                 totalOrder4["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amountsMario.append(amountMargheritaMario)
+                if item=="Pepperoni":
+                    amountsMario.append(amountPepperoniMario)
+                if item=="Tuna":
+                    amountsMario.append(amountTunaMario)
                 y+=1
         z=1
         for amount in amountsMario:
@@ -343,6 +406,12 @@ def overview_pay_mario():
         for item in OverviewMario:
             if y<(len(OverviewMario)+1):
                 totalOrder5["pizza" + str(y)]=str(item)
+                if item=="Margherita":
+                    amountsMario.append(amountMargheritaMario)
+                if item=="Pepperoni":
+                    amountsMario.append(amountPepperoniMario)
+                if item=="Tuna":
+                    amountsMario.append(amountTunaMario)
                 y+=1
         z=1
         for amount in amountsMario:
@@ -357,8 +426,9 @@ def overview_pay_mario():
 
 @app.route('/resetmario', methods=['POST', 'GET'])
 def reset_mario():
-    global OverviewMario, TotalPriceMario, amountMargheritaMario, amountPepperoniMario, amountTunaMario
+    global OverviewMario, TotalPriceMario, amountMargheritaMario, amountPepperoniMario, amountTunaMario, amountsMario
     OverviewMario = []
+    amountsMario=[]
     amountMargheritaMario=0; amountPepperoniMario=0; amountTunaMario=0
     TotalPriceMario = 0.00
     return redirect ('/mario')
