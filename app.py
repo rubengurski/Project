@@ -72,7 +72,9 @@ def screen_customers():
 @app.route('/status', methods = ['POST'])
 def sstatus():
     data = request.get_json()
+    global status
     status = data['status']
+    
     print(status)
     return '200', 200
 
@@ -285,4 +287,4 @@ def reset_mario():
     TotalPriceMario = 0.00
     return redirect ('/mario')
 
-app.run(host='192.168.0.101')
+app.run(host='192.168.0.100')
