@@ -5,7 +5,7 @@ import csv
 from datetime import datetime
 
 app = Flask(__name__)
-
+completedOrder = []
 x=1
 Overview=[]
 OverviewMario=[]
@@ -67,7 +67,8 @@ def luigi():
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
-    return render_template('Screen.html')
+    
+    return render_template('Screen.html', completedOrder = completedOrder)
 
 @app.route('/status', methods = ['POST'])
 def sstatus():
@@ -114,6 +115,15 @@ def overview_remove():
         Overview.remove('Tuna')
         TotalPrice-=7.99
         return redirect('/')
+    
+@app.route('/removepizzaluigi', methods=['POST', 'GET'])
+def overview_remove_luigi():
+    global allOrders
+    global completedOrder
+    completedOrder.append(allOrders[0])
+    allOrders.pop(0)
+
+    return redirect('/luigi')
 
 @app.route('/pay', methods=['POST', 'GET'])
 def overview_pay():

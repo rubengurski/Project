@@ -38,11 +38,7 @@
     height: 800px;
     margin-right: 20px;
 }
-.orderprep{
-    background-color: white;
-    height: 800px;
-    margin-left: 20px;
-}
+
 .order24, order25, order26{
     background-color: #B8B8B8;
     margin-bottom: 12px;
@@ -66,4 +62,17 @@
 
 .pizza24, pizza25, pizza26{
     padding-left: 25px;
+}
+
+.itemDone {
+    width:200px;
+    height: 80px;
+    background-color: #9CE76A;
+    color: #2a4518;
+    border-radius: 10px;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+
+
 }

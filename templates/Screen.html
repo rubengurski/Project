@@ -6,17 +6,15 @@
     </head>
     <body>
         <header class = "header">
-            <h1 class = "prepared">Being prepared</h1>
             <h1 class = "finished">Finished</h1>
         </header>
         <main class = "body">
-            <div class = "orderprep">
-               <p class = "o24">24</p> 
-            </div>
-            <div class = "orderfin">
-                <p class = "o25">25</p>
-                <p class = "o26">26</p>
-                <p class = "o27">27</p>
+            <div class = "orderFin">
+               {%for item in completedOrder:%}
+                <div class="itemDone">
+                    <h2>{{ item["uniqueID"] }}</h2>
+                </div>
+                {%endfor%}
             </div>
         </main>
     </body>
