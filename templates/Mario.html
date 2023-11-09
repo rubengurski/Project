@@ -6,10 +6,10 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="left-grid">
+        <div class="left-grid" style="height:100%">
             <div class="scrollspy">
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Margherita.png')}}" alt="Pizza Margherita">
@@ -52,7 +52,7 @@
                     </div>
                 </form>
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Pepperoni.png')}}" alt="Pizza Pepperoni">
@@ -95,7 +95,7 @@
                     </div>
                 </form>
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Tuna.png')}}" alt="Pizza Pepperoni">
@@ -164,10 +164,10 @@
                 <!-- Add more content for the left grid here -->
             </div>
         </div>
-        <div class="right-grid">
+        <div class="right-grid" style="height:100%">
             <h2>Overview</h2>
             <div class="total-section">
-                <div style="overflow-y: scroll; height: 400px">
+                <div style="overflow-y: scroll; height: 600px">
                     {% if Margherita in OverviewMario %}
                     <div class="item">
                         <div class="column">

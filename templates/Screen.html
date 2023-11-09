@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html style="margin: 0px; padding:0px">
+<html style="margin: 0px; padding:0px; height:97.3%">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='customer.css') }}" />
     <head style="margin:0px">
         <title>Screen Pizzeria</title>
         <meta http-equiv="refresh" content="1">
     </head>
     <body style="margin:0px">
+<<<<<<< HEAD
         <header class = "header">
             <h1 class = "finished">Finished</h1>
         </header>
@@ -16,6 +17,24 @@
                     <h2>{{ item["uniqueID"] }}</h2>
                 </div>
                 {%endfor%}
+=======
+        <header class = "header" style="height:120px">
+            <h1 class = "prepared">Being prepared</h1>
+            <h1 class = "finished">Finished</h1>
+        </header>
+        <main class = "body">
+            <div class = "orderprep">
+                {% for totalOrder in allOrders %}
+                    {% if uniqueID %}
+                    <p class = "o">{{ totalOrder.uniqueID }}</p>
+                    {% endif %}
+               {% endfor %}
+            </div>
+            <div class = "orderfin">
+                {% for ID in finishedIDsList %}
+                <p class = "o">{{ ID }}</p>
+                {% endfor %}
+>>>>>>> fe05a7959af98468c5ec054ce353c47c63af0bcf
             </div>
         </main>
     </body>
