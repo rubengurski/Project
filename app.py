@@ -64,13 +64,8 @@ def luigi():
 
 @app.route('/screen', methods=['POST', 'GET'])
 def screen_customers():
-<<<<<<< HEAD
-    
-    return render_template('Screen.html', completedOrder = completedOrder)
-=======
     global allOrders, totalOrder1, totalOrder2, totalOrder3, totalOrder4, totalOrder5, finishedIDsList
     return render_template('Screen.html', allOrders = allOrders, uniqueID=uniqueID, finishedIDsList=finishedIDsList)
->>>>>>> fe05a7959af98468c5ec054ce353c47c63af0bcf
 
 @app.route('/status', methods = ['POST'])
 def sstatus():

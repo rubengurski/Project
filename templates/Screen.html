@@ -6,18 +6,6 @@
         <meta http-equiv="refresh" content="1">
     </head>
     <body style="margin:0px">
-<<<<<<< HEAD
-        <header class = "header">
-            <h1 class = "finished">Finished</h1>
-        </header>
-        <main class = "body">
-            <div class = "orderFin">
-               {%for item in completedOrder:%}
-                <div class="itemDone">
-                    <h2>{{ item["uniqueID"] }}</h2>
-                </div>
-                {%endfor%}
-=======
         <header class = "header" style="height:120px">
             <h1 class = "prepared">Being prepared</h1>
             <h1 class = "finished">Finished</h1>
@@ -34,7 +22,6 @@
                 {% for ID in finishedIDsList %}
                 <p class = "o">{{ ID }}</p>
                 {% endfor %}
->>>>>>> fe05a7959af98468c5ec054ce353c47c63af0bcf
             </div>
         </main>
     </body>
