@@ -1,3 +1,9 @@
+html {
+    font-family:sans-serif;
+    border: 10px solid #712822;
+    padding:0px;
+}
+
 .header{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -6,13 +12,15 @@
     color: white;
     font-size: 45px;
     background-color: #C94314;
-    padding-top: 45px;
+    padding-top: 15px;
+    margin-top: 0px;
 }
 .finished{
     color: #712822;
     font-size: 45px;
     background-color: #9CE76A;
-    padding-top: 45px;
+    padding-top: 15px;
+    margin-top: 0px;
 }
 .header{
     height: 200px;
@@ -24,24 +32,24 @@
     background-color: white;
 }
 
-.o24, o25, o26, o27{
-    font-size: 100px;
-    background-color: #B8B8B8;
+.o {
+    font-size: 90px;
+    color:#712822;
+    font-weight: 900;
+    background-color: #e9e9e9;
     display: inline-block;
-    border: 2px black;
-    padding: 100px;
-    margin: 25px;
+    padding: 10px;
+    width:40%;
+    margin: 20px;
 }
 
 .orderfin{
     background-color: white;
-    height: 800px;
-    margin-right: 20px;
+    height: 600px;
 }
 .orderprep{
     background-color: white;
-    height: 800px;
-    margin-left: 20px;
+    height: 600px;
 }
 .order24, order25, order26{
     background-color: #B8B8B8;

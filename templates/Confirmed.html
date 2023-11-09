@@ -12,16 +12,16 @@
         </header>
         <div style="padding:90px; padding-top:130px">
             <a href="/" class="item-price" style="text-decoration: none; font-size: 24px;">< Back to Menu</a>
-            <div class="box">
+            <div class="box" style="margin-bottom: 90px">
                 <img src="{{url_for('static', filename='ovenicon.png')}}" style="display: block; margin-left: auto; margin-right: auto; width:12%;">
                 <p style="text-align: center; font-weight: 600; font-size: 22px;">Thank you for choosing Mario's & Luigi's Pizzeria!<br>Your order is now being processed.<br></p><p style="text-align: center; font-weight: 700; font-size: 36px; color:#712822">Your order number is</p>
                 <h1 style="text-align: center; font-size: 90px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; color:#712822">{{ uniqueID }}</h1>
             </div>
-            <div>
+            <!-- <div>
                 <p class="item-price"></p>
                 <div class="status-inprogress"><p style="color: #ffffff; font-size: 20px;">Status of your order:</p>Being processed</div>
-            </div>
-            <div style="margin-top: 80px;">
+            </div> -->
+            <!-- <div style="margin-top: 80px;">
                 <p class="item-price">Order details</p><hr style="border: 2px solid #712822">
                 {% if Margherita in Overview %}
                 <div class="row" style="font-size: larger;">
@@ -41,7 +41,7 @@
                     <p><strong>Quantity: 1</strong></p>
                 </div><hr>
                 {% endif %}
-            </div>
+            </div> -->
         </div>
         <footer>
             <div>

@@ -6,10 +6,10 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="left-grid">
+        <div class="left-grid" style="height:100%">
             <div class="scrollspy">
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Margherita.png')}}" alt="Pizza Margherita">
@@ -52,7 +52,7 @@
                     </div>
                 </form>
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Pepperoni.png')}}" alt="Pizza Pepperoni">
@@ -95,7 +95,7 @@
                     </div>
                 </form>
                 <form action="/addpizzamario" method="post">
-                    <div class="combined-section">
+                    <div class="combined-section" style="height:200px">
                         <div class="box">
                             <div class="box-image">
                                 <img src="{{url_for('static', filename='Tuna.png')}}" alt="Pizza Pepperoni">
@@ -164,60 +164,81 @@
                 <!-- Add more content for the left grid here -->
             </div>
         </div>
-        <div class="right-grid">
+        <div class="right-grid" style="height:100%">
             <h2>Overview</h2>
             <div class="total-section">
-                <form action="/paymario" method="post">
-                    <div style="overflow-y: scroll; height: 400px">
-                        {% if Margherita in OverviewMario %}
-                        <div class="item" style="width:330px">
-                            <div class="column">
-                                <div class="row">
-                                    <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
-                                </div>
-                                <div class="row">
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <p style="font-size:17px">Tomato sauce & cheese</p>
-                                    <p class="item-price">€5,99</p>
-                                </div>
+                <div style="overflow-y: scroll; height: 600px">
+                    {% if Margherita in OverviewMario %}
+                    <div class="item">
+                        <div class="column">
+                            <div class="row">
+                                <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
+                            </div>
+                            <div class="row">
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <p style="font-size:17px">Tomato sauce & cheese</p>
+                                <p class="item-price">€5,99</p>
                             </div>
                         </div>
-                        {% endif %}
-                        {% if Pepperoni in OverviewMario %}
-                        <div class="item">
-                            <div class="column">
-                                <div class="row">
-                                    <p style="font-size:20px; font-weight:700;">Pizza Pepperoni</p>
-                                </div>
-                                <div class="row">
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <p style="font-size:17px">Tomato sauce, cheese & pepperoni</p>
-                                    <p class="item-price">€6,99</p>
-                                </div>
-                            </div>
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove1" name="removepizzaMario" value="removeMargherita">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountMargheritaMario }}</strong></p>
                         </div>
-                        {% endif %}
-                        {% if Tuna in OverviewMario %}
-                        <div class="item">
-                            <div class="column">
-                                <div class="row">
-                                    <p style="font-size:20px; font-weight:700;">Pizza Tuna</p>
-                                </div>
-                                <div class="row">
-                                    <hr>
-                                </div>
-                                <div class="row">
-                                    <p style="font-size:17px">Tomato sauce, tuna, onion, olives & cheese</p>
-                                    <p class="item-price">€7,99</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
                     </div>
+                    {% endif %}
+                    {% if Pepperoni in OverviewMario %}
+                    <div class="item">
+                        <div class="column">
+                            <div class="row">
+                                <p style="font-size:20px; font-weight:700;">Pizza Pepperoni</p>
+                            </div>
+                            <div class="row">
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <p style="font-size:17px">Tomato sauce, cheese & pepperoni</p>
+                                <p class="item-price">€6,99</p>
+                            </div>
+                        </div>
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove2" name="removepizzaMario" value="removePepperoni">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountPepperoniMario }}</strong></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if Tuna in OverviewMario %}
+                    <div class="item">
+                        <div class="column">
+                            <div class="row">
+                                <p style="font-size:20px; font-weight:700;">Pizza Tuna</p>
+                            </div>
+                            <div class="row">
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <p style="font-size:17px">Tomato sauce, tuna, onion, olives & cheese</p>
+                                <p class="item-price">€7,99</p>
+                            </div>
+                        </div>
+                        <div style="margin:20px">
+                            <form action="/removepizzamario" method="post">
+                                <input type="hidden" id="remove3" name="removepizzaMario" value="removeTuna">
+                                <input class="remove" type="submit" value="Remove">      
+                            </form>
+                            <p style="font-size: 15px; margin-top: 50px;">Amount: <strong>{{ amountTunaMario }}</strong></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <form action="/paymario" method="post">
                     <div>
                         <p><strong>Total: €{{ TotalPriceMario }}</strong></p>
                         <input type="submit" name="submit" value="Pay & Proceed" class="pay-button">

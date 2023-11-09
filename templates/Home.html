@@ -114,38 +114,22 @@
                         <div style="display: flex; flex-direction: row; margin: 30px;">
                             <img src="{{url_for('static', filename='icon overview (dark).png')}}" height="70px" style="width:fit-content"><p style="font-size: 28px; font-weight: 600; margin-top: 20px; color: #712822; margin-left: 30px;">Overview</p>
                         </div>
-                        <div>
-                            {% if Margherita in Overview %}
-                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 188px">
-                                <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
-                                <input class="remove" type="submit" value="Remove">      
-                            </form>
-                            {% endif %}
-                            {% if Pepperoni in Overview %}
-                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 380px">
-                                <input type="hidden" id="remove2" name="removePizza" value="removePepperoni">
-                                <input class="remove" type="submit" value="Remove">      
-                            </form>
-                            {% endif %}
-                            {% if Tuna in Overview %}
-                            <form action="/removepizza" method="post" style="position:absolute; left:1300px; top: 580px">
-                                <input type="hidden" id="remove2" name="removePizza" value="removeTuna">
-                                <input class="remove" type="submit" value="Remove">      
-                            </form>
-                            {% endif %}
-                        </div>
-                        <form action="/pay" method="post">
                             {% if Margherita in Overview %}
                             <div class="item" style="padding-left: 0px;">
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Margherita</p>
+                                        <form action="/removepizza" method="post">
+                                            <input type="hidden" id="remove1" name="removePizza" value="removeMargherita">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </form>           
                                     </div>
                                     <div class="row">
                                         <hr>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce & cheese</p>
+                                        <p>Amount: <strong>{{ amountMargherita }}</strong></p>
                                         <p class="item-price">€5,99</p>
                                     </div>
                                     <!-- <div class="row">
@@ -182,12 +166,17 @@
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Pepperoni</p>
+                                        <form action="/removepizza" method="post">
+                                            <input type="hidden" id="remove2" name="removePizza" value="removePepperoni">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </form>            
                                     </div>
                                     <div class="row">
                                         <hr>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce, cheese & pepperoni</p>
+                                        <p>Amount: <strong>{{ amountPepperoni }}</strong></p>
                                         <p class="item-price">€6,99</p>
                                     </div>
                                     <!-- <div class="row">
@@ -224,12 +213,17 @@
                                 <div class="column">
                                     <div class="row">
                                         <p style="font-size:20px; font-weight:700;">Pizza Tuna</p>
+                                        <form action="/removepizza" method="post">
+                                            <input type="hidden" id="remove2" name="removePizza" value="removeTuna">
+                                            <input class="remove" type="submit" value="Remove">      
+                                        </form>            
                                     </div>
                                     <div class="row">
                                         <hr>
                                     </div>
                                     <div class="row">
                                         <p>Tomato sauce, tuna, onion, olives & cheese</p>
+                                        <p>Amount: <strong>{{ amountTuna }}</strong></p>
                                         <p class="item-price">€7,99</p>
                                     </div>
                                     <!-- <div class="row">
@@ -269,6 +263,7 @@
                             <div class="choice" style="margin-bottom: 30px;">
                                 <label for="enteremail" style="color:#712822; margin:5px">Please enter e-mail address to receive order confirmation & number:</label><input type="text" name="enteremail" style="width:100%; margin-top: 10px; margin-bottom: 30px;">
                             </div>
+                        <form action="/pay" method="post">
                             <img src="{{url_for('static', filename='paymentmethods.png')}}" height="40px" width="80%" style="margin:10px">
                             <input type="submit" name="submit" value="Pay & Proceed" style="margin-left: 200px; background-color: #712822; border:none; color:#ffffff; height: 60px; font-weight: 600; font-size: 25px; border-radius: 18px; padding:10px">
                         </form>
@@ -276,7 +271,7 @@
                 </div>
             </div>
         </div>
-        <img src="{{url_for('static', filename='Background pizzeria1.png')}}" width="100%" style="padding-bottom: 1150px;">
+        <img src="{{url_for('static', filename='Background pizzeria1.png')}}" width="100%" style="padding-bottom: 800px;">
         <footer>
             <div>
                 <h5>Contact Us</h5>
