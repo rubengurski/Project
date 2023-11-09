@@ -9,6 +9,7 @@ REDLEDPIN = 4
 GREENLEDPIN = 5
 BLUELEDPIN = 6
 YELLOWLEDPIN = 7
+BUZZER = 3
 
 # Programs
 PROGRAMS = [
@@ -25,6 +26,7 @@ TIMER_DURATIONS = [2, 3, 4, 5]
 current_program = 0
 button_last_state = [1, 1]  
 timers = [None] * len(PROGRAMS)
+e = 0
 
 # Functions
 def setup():
@@ -36,11 +38,11 @@ def setup():
     board.set_pin_mode_digital_output(GREENLEDPIN)
     board.set_pin_mode_digital_output(BLUELEDPIN)
     board.set_pin_mode_digital_output(YELLOWLEDPIN)
+    board.set_pin_mode_analog_output(BUZZER)
     board.digital_write(YELLOWLEDPIN, 1)
     board.digital_write(BLUELEDPIN, 0)
     board.digital_write(GREENLEDPIN, 0)
     board.digital_write(REDLEDPIN, 0)
-
 def start_timer(duration, program_index):
     def timer_callback():
         led_states = PROGRAMS[program_index]
@@ -80,9 +82,17 @@ def loop():
             remaining_time -= 1
         else:
             global response
+            global e
             print("\nThe pizzas are ready!")
             data = { 'status': "Pizza done" }
             response = requests.post('http://192.168.0.101:5000/status', json = data)
+            while e < 3:
+                board.analog_write(BUZZER, 10)
+                time.sleep(0.25)
+                board.analog_write(BUZZER, 0)
+                time.sleep(0.25)
+                e += 0.5
+            e = 0
     button_last_state[0] = button1_state
     button_last_state[1] = button2_state
 
